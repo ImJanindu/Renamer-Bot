@@ -214,20 +214,15 @@ async def button(c, m):
             return await m.message.edit('Only supported MP4')
           else:
             pass
-          return await c.send_message(
-             chat_id=m.message.chat.id,
+          return await m.message.edit(
              text="Select Button Below to Convert",
-             reply_to_message_id=m.message.reply_to_message.message_id,
              reply_markup=InlineKeyboardMarkup(
-               [
-                 [
+                 [[
                    InlineKeyboardButton("Convert to Video", callback_data="cvideo")
-                 ],
-                 [
+                 ],[
                    InlineKeyboardButton("Cᴀɴᴄᴇʟ", callback_data="close")
-                 ]
-               ]
-          )
+                 ]])
+                 )
 
     elif m.data == "about":
        await m.message.edit(Scripted.ABOUT_TEXT,

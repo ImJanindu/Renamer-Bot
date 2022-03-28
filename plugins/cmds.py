@@ -1,7 +1,6 @@
 #https://github.com/PredatorHackerzZ/RENAMER-BOT
 
 import requests 
-import ffmpeg
 import sys
 import os
 import asyncio

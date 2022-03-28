@@ -229,6 +229,27 @@ async def button(c, m):
                ]
           )
 
+    elif m.data == "about":
+       await m.message.edit(Scripted.ABOUT_TEXT,
+                            parse_mode="html",
+                            disable_web_page_preview=True,
+                            reply_markup=InlineKeyboardMarkup([[ InlineKeyboardButton(text='« Bᴀᴄᴋ', callback_data='home') ] ] ) )
+
+    elif m.data == "help":
+       await m.message.edit(Scripted.HELP_TEXT,
+                            parse_mode="html",
+                            disable_web_page_preview=True,
+                            reply_markup=InlineKeyboardMarkup([[ InlineKeyboardButton(text='« Bᴀᴄᴋ', callback_data='home') ] ] ) )
+
+    elif m.data == "home":
+       await m.message.edit(Scripted.START_TEXT.format(m.from_user.mention),
+                            parse_mode="html",
+                            disable_web_page_preview=True,
+                            reply_markup=InlineKeyboardMarkup([[ InlineKeyboardButton(text='Hᴇʟᴩ', callback_data='help'), InlineKeyboardButton(text='Aʙᴏᴜᴛ', callback_data='about') ],[ InlineKeyboardButton(text='Cʟᴏꜱᴇ', callback_data='close') ] ] ) )
+
+    elif m.data == "close":
+       await m.message.delete()
+
     elif m.data == "cvideo":
       update = m.message
       bot = c
@@ -317,24 +338,4 @@ async def button(c, m):
               chat_id=update.chat.id,
               text=Scripted.REPLY_TO_MEDIA,
               reply_to_message_id=update.message_id)
-    elif m.data == "about":
-       await m.message.edit(Scripted.ABOUT_TEXT,
-                            parse_mode="html",
-                            disable_web_page_preview=True,
-                            reply_markup=InlineKeyboardMarkup([[ InlineKeyboardButton(text='« Bᴀᴄᴋ', callback_data='home') ] ] ) )
-
-    elif m.data == "help":
-       await m.message.edit(Scripted.HELP_TEXT,
-                            parse_mode="html",
-                            disable_web_page_preview=True,
-                            reply_markup=InlineKeyboardMarkup([[ InlineKeyboardButton(text='« Bᴀᴄᴋ', callback_data='home') ] ] ) )
-
-    elif m.data == "home":
-       await m.message.edit(Scripted.START_TEXT.format(m.from_user.mention),
-                            parse_mode="html",
-                            disable_web_page_preview=True,
-                            reply_markup=InlineKeyboardMarkup([[ InlineKeyboardButton(text='Hᴇʟᴩ', callback_data='help'), InlineKeyboardButton(text='Aʙᴏᴜᴛ', callback_data='about') ],[ InlineKeyboardButton(text='Cʟᴏꜱᴇ', callback_data='close') ] ] ) )
-
-    elif m.data == "close":
-       await m.message.delete()
 

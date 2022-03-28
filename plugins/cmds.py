@@ -206,9 +206,9 @@ async def button(c, m):
     )
 
     elif m.data == "convert":
-       m = m.message.reply_to_message
-       media = m.document or m.video or m.audio or m.voice or m.video_note or m.animation
-       if m.document:
+       f = m.message.reply_to_message
+       media = f.document or f.video or f.audio or f.voice or f.video_note or f.animation
+       if f.document:
           if not media.file_name.endswith('.mp4'):
             return await m.message.edit('Only supported MP4')
           else:
